@@ -1,0 +1,2 @@
+import Link from "next/link";import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";import { services } from "@/data/site";
+export function ServiceList(){return <div className="service-list">{services.map((s,i)=><Link key={s.slug} href={`/services/${s.slug}`}><span className="service-index">0{i+1}</span><span><h3>{s.title}</h3><p>{s.intro}</p></span><ArrowUpRight size={24}/></Link>)}</div>}

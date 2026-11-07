@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local tooling and test artifacts
+.playwright-cli/
+playwright-report/
+test-results/
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Project source/reference material not required at runtime
+/Al_Reem_Audit_Master_Website_Prompt.md
+/WhatsApp Image 2026-11-03 at 10.46.18 AM.jpeg
+/public/icon-source.svg
+/public/al-reem-logo.png
+/public/images/*.png
+/components/VisualFeature.tsx

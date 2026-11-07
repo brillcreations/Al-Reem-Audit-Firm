@@ -1,0 +1,9 @@
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { List, X, CaretDown } from "@phosphor-icons/react";
+import { Logo } from "./Logo";
+import { services } from "@/data/site";
+const links=[['About','/about'],['Industries','/industries'],['Insights','/insights'],['Contact','/contact']];
+export function Header(){const [open,setOpen]=useState(false);const path=usePathname();return <header className="site-header"><div className="nav-wrap"><Logo/><nav className="desktop-nav" aria-label="Primary"><Link className={path==='/'?'active':''} href="/">Home</Link><Link className={path==='/about'?'active':''} href="/about">About</Link><div className="nav-services"><Link href="/services">Services <CaretDown size={13}/></Link><div className="mega"><div><span className="mega-label">Capabilities</span><h3>Clarity across every financial decision.</h3><Link className="text-link" href="/services">View all services</Link></div><div>{services.map(s=><Link key={s.slug} href={`/services/${s.slug}`}><strong>{s.title}</strong><span>{s.intro}</span></Link>)}</div></div></div>{links.slice(1).map(([label,href])=><Link className={path===href?'active':''} key={href} href={href}>{label}</Link>)}</nav><Link className="button nav-cta" href="/contact">Speak with our team</Link><button className="menu-button" onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open?'Close menu':'Open menu'}>{open?<X/>:<List/>}</button></div><div id="mobile-menu" className={`mobile-nav ${open?'open':''}`}><nav aria-label="Mobile">{[['Home','/'],['About','/about'],['Services','/services'],['Industries','/industries'],['Insights','/insights'],['Contact','/contact']].map(([l,h])=><Link onClick={()=>setOpen(false)} key={h} href={h}>{l}</Link>)}<Link onClick={()=>setOpen(false)} className="button" href="/contact">Speak with our team</Link></nav></div></header>}
